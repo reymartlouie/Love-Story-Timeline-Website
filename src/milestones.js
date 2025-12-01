@@ -1,11 +1,9 @@
-// milestones.js
 let milestones = [];
 
 try {
-  // Try to load private data
-  milestones = require('./milestones.private.js').default;
-} catch {
-  // Fallback to placeholder data for public repo
+  const module = await import('./milestones.private.js');
+  milestones = module.default;
+} catch (err) {
   milestones = [
     {
       id: 1,

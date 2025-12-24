@@ -87,7 +87,7 @@ export default function App() {
           </div>
           <h1 className="hero-title">Our Love Story</h1>
           <p className="hero-subtitle">Reymart & Keisha</p>
-          <div className="hero-date">2024 — madeds</div>
+          <div className="hero-date">2024 — death</div>
           <div className="scroll-indicator">
             <div className="scroll-arrow"></div>
           </div>

@@ -17,8 +17,8 @@ const defaultMilestones = [
   }
 ];
 
-// Use import.meta.glob to safely handle missing private file
-const privateModules = import.meta.glob('./milestones.private.js', { eager: true });
+// Use import.meta.glob with wildcard pattern to safely handle missing private file
+const privateModules = import.meta.glob('./milestones.private.*', { eager: true });
 const privateModule = privateModules['./milestones.private.js'];
 
 const milestones = privateModule?.default || defaultMilestones;

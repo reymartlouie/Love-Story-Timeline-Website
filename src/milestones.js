@@ -1,3 +1,4 @@
+// Default placeholder milestones for demo/public deployment
 const defaultMilestones = [
   {
     id: 1,
@@ -17,10 +18,10 @@ const defaultMilestones = [
   }
 ];
 
-// Use import.meta.glob with wildcard pattern to safely handle missing private file
-const privateModules = import.meta.glob('./milestones.private.*', { eager: true });
-const privateModule = privateModules['./milestones.private.js'];
+// Load private milestones if available (file is gitignored)
+// Vite plugin returns null when file doesn't exist
+import privateData from './milestones.private.js';
 
-const milestones = privateModule?.default || defaultMilestones;
+const milestones = privateData || defaultMilestones;
 
 export default milestones;

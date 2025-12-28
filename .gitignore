@@ -32,3 +32,5 @@ milestones.private.js*.private.js
 public/images/*
 !public/images/.gitkeep
 
+.vercel
+.env*.local

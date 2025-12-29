@@ -266,6 +266,23 @@ const PhotoModal = ({ isOpen, onClose, milestones, currentIndex, setCurrentIndex
           {currentIndex + 1} / {milestones.length}
         </div>
 
+        <div className="zoom-controls">
+          <button
+            className="zoom-btn"
+            onClick={handleZoomOut}
+            disabled={zoom <= 1}
+          >
+            −
+          </button>
+          <button
+            className="zoom-btn"
+            onClick={handleZoomIn}
+            disabled={zoom >= 4}
+          >
+            +
+          </button>
+        </div>
+
         <button className="modal-close" onClick={handleClose}>
           ×
         </button>
@@ -308,23 +325,6 @@ const PhotoModal = ({ isOpen, onClose, milestones, currentIndex, setCurrentIndex
         <div className="modal-info">
           <h3>{currentMilestone.title}</h3>
           <p>{currentMilestone.date}</p>
-        </div>
-
-        <div className="zoom-controls">
-          <button
-            className="zoom-btn"
-            onClick={handleZoomOut}
-            disabled={zoom <= 1}
-          >
-            −
-          </button>
-          <button
-            className="zoom-btn"
-            onClick={handleZoomIn}
-            disabled={zoom >= 4}
-          >
-            +
-          </button>
         </div>
       </div>
     </div>

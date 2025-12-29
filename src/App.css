@@ -675,42 +675,55 @@ body {
   font-weight: 400;
 }
 
-/* ===== APPLE-STYLE PHOTO MODAL ===== */
+/* ===== ZEN-STYLE PHOTO MODAL ===== */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  animation: modalFadeIn 0.3s ease forwards;
+  animation: modalFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(24px);
+  }
 }
 
 .modal-overlay.closing {
-  animation: modalFadeOut 0.2s ease forwards;
+  animation: modalFadeOut 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes modalFadeOut {
-  to { opacity: 0; }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
 }
 
 .modal-content {
   position: relative;
-  width: 90vw;
-  height: 90vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 100px 120px;
+  box-sizing: border-box;
 }
 
 .modal-image-container {
@@ -722,6 +735,8 @@ body {
   justify-content: center;
   overflow: hidden;
   cursor: grab;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
 }
 
 .modal-image-container.grabbing {
@@ -730,128 +745,161 @@ body {
 
 .modal-image {
   max-width: 100%;
-  max-height: 80vh;
+  max-height: 70vh;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
   -webkit-user-drag: none;
-  border-radius: 12px;
+  border-radius: 24px;
+}
+
+.modal-counter {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  background: linear-gradient(
+    135deg,
+    rgba(40, 40, 40, 0.7) 0%,
+    rgba(30, 30, 30, 0.5) 100%
+  );
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-info {
   position: absolute;
-  bottom: 48px;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  max-width: 80%;
+  background: linear-gradient(
+    135deg,
+    rgba(40, 40, 40, 0.7) 0%,
+    rgba(30, 30, 30, 0.5) 100%
+  );
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  padding: 14px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-info h3 {
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0;
   color: #ffffff;
-  font-size: clamp(17px, 2.5vw, 21px);
+  font-size: clamp(14px, 1.8vw, 16px);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .modal-info p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: clamp(12px, 1.5vw, 14px);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(11px, 1.2vw, 12px);
   font-weight: 400;
-}
-
-.modal-counter {
-  position: absolute;
-  top: 48px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.02em;
 }
 
 .modal-close {
   position: absolute;
-  top: 48px;
-  right: 48px;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
+  top: 32px;
+  right: 32px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  color: #ffffff;
-  transition: background 0.2s ease;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10001;
 }
 
 .modal-close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
 .modal-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: #ffffff;
-  transition: background 0.2s ease;
-}
-
-.modal-nav:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.modal-nav:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.modal-nav.prev { left: 48px; }
-.modal-nav.next { right: 48px; }
-
-.zoom-controls {
-  position: absolute;
-  bottom: 48px;
-  right: 48px;
-  display: flex;
-  gap: 8px;
-}
-
-.zoom-btn {
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-nav:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  transition: background 0.2s ease;
-  font-weight: 600;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.modal-nav:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.modal-nav.prev { left: 32px; }
+.modal-nav.next { right: 32px; }
+
+.zoom-controls {
+  position: absolute;
+  top: 32px;
+  left: 110px;
+  display: flex;
+  gap: 6px;
+  background: linear-gradient(
+    135deg,
+    rgba(40, 40, 40, 0.7) 0%,
+    rgba(30, 30, 30, 0.5) 100%
+  );
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  padding: 8px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.zoom-btn {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
 }
 
 .zoom-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
 .zoom-btn:disabled {
@@ -963,48 +1011,71 @@ footer {
 
   /* Mobile modal */
   .modal-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  .modal-nav.prev { left: 12px; }
+  .modal-nav.next { right: 12px; }
+
+  .modal-close {
+    top: 12px;
+    right: 12px;
     width: 36px;
     height: 36px;
     font-size: 16px;
-  }
-
-  .modal-nav.prev { left: 16px; }
-  .modal-nav.next { right: 16px; }
-
-  .modal-close {
-    top: 16px;
-    right: 16px;
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
+    border-radius: 10px;
   }
 
   .modal-counter {
-    top: 16px;
+    top: 12px;
+    left: 12px;
     font-size: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
   }
 
   .zoom-controls {
-    bottom: 16px;
-    right: 16px;
+    top: 12px;
+    left: 80px;
+    padding: 6px 8px;
+    border-radius: 10px;
   }
 
   .zoom-btn {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     font-size: 14px;
+    border-radius: 6px;
+  }
+
+  .modal-content {
+    padding: 70px 24px 100px;
+  }
+
+  .modal-image-container {
+    border-radius: 16px;
+  }
+
+  .modal-image {
+    max-height: 60vh;
+    border-radius: 16px;
   }
 
   .modal-info {
-    bottom: 80px;
+    bottom: 16px;
+    padding: 12px 20px;
+    border-radius: 14px;
   }
 
   .modal-info h3 {
-    font-size: 17px;
+    font-size: 13px;
   }
 
   .modal-info p {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .floating-particle-heart {

@@ -202,20 +202,20 @@ body {
 }
 
 .loading-text {
-  font-size: 21px;
+  font-size: clamp(17px, 3vw, 21px);
   color: var(--text-primary);
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: clamp(16px, 3vw, 20px);
   letter-spacing: -0.01em;
 }
 
 .progress-bar {
-  width: 180px;
+  width: clamp(140px, 30vw, 180px);
   height: 4px;
   background: var(--bg-secondary);
   border-radius: 2px;
   overflow: hidden;
-  margin: 0 auto 12px;
+  margin: 0 auto clamp(8px, 1.5vw, 12px);
 }
 
 .progress-fill {
@@ -226,7 +226,7 @@ body {
 }
 
 .progress-text {
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   color: var(--text-secondary);
   font-weight: 400;
 }
@@ -238,14 +238,14 @@ body {
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  padding: 120px 24px;
-  padding-left: 10%;
+  padding: clamp(80px, 15vh, 120px) clamp(16px, 4vw, 24px);
+  padding-left: clamp(24px, 10vw, 15%);
   background: var(--bg-primary);
 }
 
 .hero-content {
   text-align: left;
-  max-width: 700px;
+  max-width: min(700px, 60vw);
   animation: fadeInUp 0.8s ease;
 }
 
@@ -266,8 +266,8 @@ body {
 
 .floating-heart {
   display: inline-block;
-  font-size: 32px;
-  margin: 0 8px;
+  font-size: clamp(24px, 4vw, 32px);
+  margin: 0 clamp(4px, 1vw, 8px);
   animation: gentleBounce 3s ease-in-out infinite;
   opacity: 0.8;
 }
@@ -282,16 +282,16 @@ body {
 }
 
 .hero-title {
-  font-size: 96px;
+  font-size: clamp(36px, 8vw, 96px);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: clamp(8px, 1.5vw, 12px);
   letter-spacing: -0.03em;
   line-height: 1;
 }
 
 .hero-subtitle {
-  font-size: 32px;
+  font-size: clamp(20px, 3vw, 32px);
   color: var(--text-primary);
   font-weight: 600;
   margin-bottom: 8px;
@@ -299,10 +299,10 @@ body {
 }
 
 .hero-date {
-  font-size: 21px;
+  font-size: clamp(14px, 2vw, 21px);
   color: var(--text-secondary);
   font-weight: 400;
-  margin-bottom: 48px;
+  margin-bottom: clamp(32px, 5vh, 48px);
 }
 
 /* ===== SCATTERED PHOTOS ===== */
@@ -325,12 +325,12 @@ body {
 }
 
 .scattered-photo img {
-  width: 120px;
-  height: 120px;
+  width: clamp(60px, 10vw, 120px);
+  height: clamp(60px, 10vw, 120px);
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: clamp(4px, 1vw, 8px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  border: 4px solid #fff;
+  border: clamp(2px, 0.4vw, 4px) solid #fff;
 }
 
 @keyframes stampIn {
@@ -348,95 +348,137 @@ body {
   }
 }
 
-/* Photo positions - around the edges, avoiding center text */
+/* Photo positions - using viewport units for any screen ratio */
 .scattered-photo.top-right {
-  top: 10%;
-  right: 8%;
+  top: 8vh;
+  right: 5vw;
 }
 
 .scattered-photo.right {
-  top: 40%;
-  right: 5%;
+  top: 40vh;
+  right: 3vw;
 }
 
 .scattered-photo.bottom-right {
-  bottom: 15%;
-  right: 10%;
+  bottom: 12vh;
+  right: 5vw;
 }
 
 .scattered-photo.bottom {
-  bottom: 8%;
-  left: 50%;
-  transform-origin: center;
+  bottom: 6vh;
+  right: 25vw;
 }
 
 .scattered-photo.top {
-  top: 8%;
-  right: 30%;
+  top: 6vh;
+  right: 25vw;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1068px) {
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
   .scattered-photo img {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  .scattered-photo img {
-    width: 70px;
-    height: 70px;
-    border-width: 3px;
+    width: clamp(40px, 12vh, 80px);
+    height: clamp(40px, 12vh, 80px);
   }
 
   .scattered-photo.top-right {
-    top: 5%;
-    right: 5%;
+    top: 10vh;
+    right: 3vw;
   }
 
   .scattered-photo.right {
-    top: 35%;
-    right: 3%;
+    top: 45vh;
+    right: 2vw;
   }
 
   .scattered-photo.bottom-right {
-    bottom: 25%;
-    right: 5%;
+    bottom: 10vh;
+    right: 3vw;
   }
 
-  .scattered-photo.bottom {
-    bottom: 5%;
-    left: 60%;
-  }
-
+  .scattered-photo.bottom,
   .scattered-photo.top {
     display: none;
   }
 }
 
-@media (max-width: 480px) {
+/* Wide screens */
+@media (min-width: 1400px) {
   .scattered-photo img {
-    width: 55px;
-    height: 55px;
-    border-width: 2px;
+    width: clamp(100px, 8vw, 150px);
+    height: clamp(100px, 8vw, 150px);
   }
 
+  .scattered-photo.top-right {
+    right: 8vw;
+  }
+
+  .scattered-photo.right {
+    right: 5vw;
+  }
+
+  .scattered-photo.bottom-right {
+    right: 8vw;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) and (orientation: portrait) {
+  .scattered-photo.top {
+    display: none;
+  }
+
+  .scattered-photo.bottom {
+    right: 15vw;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) and (orientation: portrait) {
   .scattered-photo.right,
   .scattered-photo.bottom {
     display: none;
+  }
+
+  .scattered-photo.top-right {
+    top: 3vh;
+    right: 3vw;
+  }
+
+  .scattered-photo.bottom-right {
+    bottom: 15vh;
+    right: 3vw;
+  }
+}
+
+/* Very tall screens (mobile) */
+@media (max-width: 480px) and (min-height: 700px) {
+  .scattered-photo.bottom-right {
+    bottom: 20vh;
+  }
+}
+
+/* Square-ish aspect ratios */
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+  .scattered-photo.top {
+    right: 20vw;
+  }
+
+  .scattered-photo.bottom {
+    right: 20vw;
   }
 }
 
 .scroll-indicator {
   position: absolute;
-  bottom: 48px;
-  left: 10%;
+  bottom: clamp(32px, 6vh, 48px);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .scroll-arrow {
-  width: 20px;
-  height: 20px;
+  width: clamp(16px, 2.5vw, 20px);
+  height: clamp(16px, 2.5vw, 20px);
   border-left: 2px solid var(--text-secondary);
   border-bottom: 2px solid var(--text-secondary);
   transform: rotate(-45deg);
@@ -462,7 +504,7 @@ body {
 .counter-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 24px;
   margin-bottom: 16px;
 }
@@ -473,7 +515,7 @@ body {
 }
 
 .counter-value {
-  font-size: 48px;
+  font-size: clamp(24px, 4vw, 48px);
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -481,7 +523,7 @@ body {
 }
 
 .counter-label {
-  font-size: 12px;
+  font-size: clamp(9px, 1.2vw, 12px);
   color: var(--text-secondary);
   font-weight: 500;
   text-transform: uppercase;
@@ -490,7 +532,7 @@ body {
 }
 
 .special-milestone {
-  font-size: 17px;
+  font-size: clamp(14px, 2vw, 17px);
   color: var(--accent);
   font-weight: 600;
   margin-top: 8px;
@@ -500,7 +542,7 @@ body {
 .timeline {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 24px 120px;
+  padding: clamp(48px, 8vh, 80px) clamp(16px, 4vw, 24px) clamp(80px, 12vh, 120px);
   position: relative;
 }
 
@@ -509,8 +551,8 @@ body {
   width: 1px;
   background: var(--border-light);
   position: absolute;
-  top: 80px;
-  bottom: 120px;
+  top: clamp(48px, 8vh, 80px);
+  bottom: clamp(80px, 12vh, 120px);
   left: 50%;
   transform: translateX(-50%);
 }
@@ -518,7 +560,7 @@ body {
 .timeline-item {
   display: flex;
   width: 100%;
-  margin: 80px 0;
+  margin: clamp(40px, 8vh, 80px) 0;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -556,7 +598,7 @@ body {
 
 .timeline-content h2 {
   margin: 0 0 4px 0;
-  font-size: 28px;
+  font-size: clamp(19px, 3vw, 28px);
   color: var(--text-primary);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -565,14 +607,14 @@ body {
 .timeline-content .date {
   font-weight: 500;
   color: var(--text-secondary);
-  margin: 0 0 20px 0;
-  font-size: 14px;
+  margin: 0 0 clamp(12px, 2vw, 20px) 0;
+  font-size: clamp(12px, 1.5vw, 14px);
 }
 
 .timeline-content img {
   width: 100%;
-  border-radius: 18px;
-  margin-bottom: 20px;
+  border-radius: clamp(12px, 2vw, 18px);
+  margin-bottom: clamp(12px, 2vw, 20px);
   object-fit: cover;
   transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
   cursor: pointer;
@@ -585,7 +627,7 @@ body {
 .timeline-content p {
   color: var(--text-secondary);
   line-height: 1.5;
-  font-size: 17px;
+  font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 400;
 }
 
@@ -664,7 +706,7 @@ body {
 .modal-info h3 {
   margin: 0 0 4px 0;
   color: #ffffff;
-  font-size: 21px;
+  font-size: clamp(17px, 2.5vw, 21px);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -672,7 +714,7 @@ body {
 .modal-info p {
   margin: 0;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   font-weight: 400;
 }
 
@@ -776,8 +818,8 @@ body {
 /* ===== APPLE-STYLE FOOTER ===== */
 footer {
   text-align: center;
-  padding: 48px 24px;
-  font-size: 17px;
+  padding: clamp(32px, 6vh, 48px) clamp(16px, 4vw, 24px);
+  font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 400;
   background: var(--bg-secondary);
   color: var(--text-secondary);
@@ -802,10 +844,6 @@ footer {
   .hero {
     padding: 80px 24px;
     padding-left: 24px;
-  }
-
-  .scroll-indicator {
-    left: 24px;
   }
 
   .hero-title {

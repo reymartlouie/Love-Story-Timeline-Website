@@ -63,16 +63,36 @@
   .hero {
     padding: 80px 24px;
     padding-left: 24px;
+    justify-content: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
   }
 
   .hero-title { font-size: 48px; }
   .hero-subtitle { font-size: 24px; }
   .hero-date { font-size: 17px; }
 
-  .counter-grid { gap: 12px; }
+  /* Hide keyboard-based scroll indicator on mobile */
+  .scroll-indicator {
+    display: none;
+  }
+
+  .counter-grid {
+    gap: 12px;
+    justify-content: center;
+  }
   .counter-item { min-width: 60px; }
   .counter-value { font-size: 32px; }
   .counter-label { font-size: 10px; }
+
+  .memory-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .timeline { padding: 48px 24px 80px; }
 

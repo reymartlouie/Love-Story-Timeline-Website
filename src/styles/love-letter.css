@@ -176,11 +176,19 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+/* Make the whole screen tappable */
+.love-letter-screen {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
 /* Mobile adjustments */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .letter-paper {
     padding: 28px 20px;
     border-radius: 20px;
+    margin: 0 16px;
   }
 
   .letter-icon {
@@ -189,5 +197,29 @@
 
   .message-text {
     font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .space-hint {
+    font-size: 14px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .letter-paper {
+    padding: 24px 18px;
+  }
+
+  .message-text {
+    font-size: 16px;
+  }
+
+  .message-signature {
+    font-size: 14px;
+    margin-bottom: 24px;
   }
 }

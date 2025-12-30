@@ -3,23 +3,39 @@ import { useState, useEffect } from 'react';
 const LoveLetter = ({ onComplete, onPlayMusic }) => {
   const [stage, setStage] = useState(0); // 0: initial, 1: message revealed
   const [isExiting, setIsExiting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Handle progression (both keyboard and touch)
+  const handleProgress = () => {
+    if (stage === 0) {
+      // First interaction: reveal message + play music
+      setStage(1);
+      onPlayMusic?.();
+    } else if (stage === 1) {
+      // Second interaction: exit to hero
+      setIsExiting(true);
+      setTimeout(() => {
+        onComplete?.();
+      }, 600);
+    }
+  };
+
+  // Keyboard support
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === 'Space') {
         e.preventDefault();
-
-        if (stage === 0) {
-          // First space: reveal message + play music
-          setStage(1);
-          onPlayMusic?.();
-        } else if (stage === 1) {
-          // Second space: exit to hero
-          setIsExiting(true);
-          setTimeout(() => {
-            onComplete?.();
-          }, 600);
-        }
+        handleProgress();
       }
     };
 
@@ -28,7 +44,14 @@ const LoveLetter = ({ onComplete, onPlayMusic }) => {
   }, [stage, onComplete, onPlayMusic]);
 
   return (
-    <div className={`love-letter-screen ${isExiting ? 'fade-out' : ''}`}>
+    <div
+      className={`love-letter-screen ${isExiting ? 'fade-out' : ''}`}
+      onClick={handleProgress}
+      onTouchEnd={(e) => {
+        e.preventDefault();
+        handleProgress();
+      }}
+    >
       <div className="love-letter-container">
         <div className="letter-envelope">
           <div className="letter-paper">
@@ -37,7 +60,11 @@ const LoveLetter = ({ onComplete, onPlayMusic }) => {
                 <div className="letter-icon">💌</div>
                 <p>You have a message...</p>
                 <div className="space-hint">
-                  Press <span className="key">Space</span> to open
+                  {isMobile ? (
+                    <>Tap anywhere to open</>
+                  ) : (
+                    <>Press <span className="key">Space</span> to open</>
+                  )}
                 </div>
               </div>
             ) : (
@@ -47,7 +74,11 @@ const LoveLetter = ({ onComplete, onPlayMusic }) => {
                 </p>
                 <div className="message-signature">— With all my heart ❤️</div>
                 <div className="space-hint continue">
-                  Press <span className="key">Space</span> to continue
+                  {isMobile ? (
+                    <>Tap anywhere to continue</>
+                  ) : (
+                    <>Press <span className="key">Space</span> to continue</>
+                  )}
                 </div>
               </div>
             )}

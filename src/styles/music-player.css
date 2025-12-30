@@ -225,3 +225,43 @@
     width: 60px;
   }
 }
+
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark) {
+  .player-section {
+    background: rgba(45, 45, 50, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .player-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .player-btn.play-btn {
+    background: #ffffff;
+    color: #121212;
+  }
+
+  .player-btn.play-btn:hover {
+    background: #ffffff;
+  }
+
+  .volume-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .volume-slider input[type="range"] {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .volume-slider input[type="range"]::-webkit-slider-thumb {
+    background: #ffffff;
+  }
+
+  .volume-slider input[type="range"]::-moz-range-thumb {
+    background: #ffffff;
+  }
+}

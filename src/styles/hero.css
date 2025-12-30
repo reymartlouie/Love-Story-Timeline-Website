@@ -228,3 +228,32 @@
   font-weight: 600;
   margin-top: 8px;
 }
+
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: linear-gradient(
+      135deg,
+      #1a1a2e 0%,
+      #2d1f3d 25%,
+      #1f2937 50%,
+      #2d1f3d 75%,
+      #1a1a2e 100%
+    );
+  }
+
+  .scattered-photo img {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .scroll-indicator .key-hint {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-secondary);
+  }
+
+  .floating-heart-bg {
+    opacity: 0.08;
+  }
+}

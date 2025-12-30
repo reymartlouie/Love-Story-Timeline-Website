@@ -40,7 +40,7 @@
   left: 50%;
   width: 40px;
   height: 40px;
-  background: var(--text-primary);
+  background: #e53e3e;
   transform: translate(-50%, -50%) rotate(-45deg);
   animation: heartBeat 1s ease-in-out infinite;
   border-radius: 4px;
@@ -52,7 +52,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  background: var(--text-primary);
+  background: #e53e3e;
   border-radius: 50%;
 }
 
@@ -65,7 +65,7 @@
   left: 50%;
   width: 40px;
   height: 40px;
-  background: rgba(29, 29, 31, 0.1);
+  background: rgba(229, 62, 62, 0.3);
   transform: translate(-50%, -50%) rotate(-45deg);
   animation: pulse 1s ease-out infinite;
   border-radius: 4px;
@@ -77,7 +77,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  background: rgba(29, 29, 31, 0.1);
+  background: rgba(229, 62, 62, 0.3);
   border-radius: 50%;
 }
 
@@ -128,4 +128,16 @@
   font-size: clamp(12px, 1.5vw, 14px);
   color: var(--text-secondary);
   font-weight: 400;
+}
+
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark) {
+  .heart-pulse {
+    background: rgba(229, 62, 62, 0.2);
+  }
+
+  .heart-pulse::before,
+  .heart-pulse::after {
+    background: rgba(229, 62, 62, 0.2);
+  }
 }

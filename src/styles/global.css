@@ -15,6 +15,18 @@
   --border-light: rgba(0, 0, 0, 0.08);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b5;
+    --accent: #ff8a5b;
+    --accent-soft: #ffab8a;
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --border-light: rgba(255, 255, 255, 0.12);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;

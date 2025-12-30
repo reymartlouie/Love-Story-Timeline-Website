@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: clamp(48px, 8vh, 80px) clamp(24px, 5vw, 48px) clamp(80px, 12vh, 120px);
   position: relative;
-  background: #ffffff;
+  background: var(--bg-primary);
   z-index: 2;
   border-radius: 40px 40px 0 0;
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
@@ -126,4 +126,24 @@
   line-height: 1.5;
   font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 400;
+}
+
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark) {
+  .timeline {
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .timeline-content {
+    background: linear-gradient(
+      135deg,
+      rgba(45, 45, 50, 0.8) 0%,
+      rgba(35, 35, 40, 0.6) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
 }

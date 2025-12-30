@@ -9,7 +9,8 @@ import {
   TimelineItem,
   PhotoModal,
   ScatteredPhotos,
-  MemoryCounter
+  MemoryCounter,
+  MusicPlayer
 } from './components';
 
 // Your relationship start date
@@ -147,6 +148,8 @@ export default function App() {
           <div className="hero-date">2024 — Death</div>
 
           <MemoryCounter timeStats={timeStats} specialMilestone={specialMilestone} />
+
+          <MusicPlayer src="/audio/ilysb-stripped.mp3" autoPlay />
 
           <div className="scroll-indicator">
             <span className="key-hint">Space</span> to scroll

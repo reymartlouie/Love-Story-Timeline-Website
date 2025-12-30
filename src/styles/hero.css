@@ -7,7 +7,14 @@
   position: relative;
   padding: clamp(80px, 15vh, 120px) clamp(16px, 4vw, 24px);
   padding-left: clamp(24px, 10vw, 15%);
-  background: var(--bg-primary);
+  background: linear-gradient(
+    135deg,
+    #fdf6f0 0%,
+    #f8e8e0 25%,
+    #fce4ec 50%,
+    #f3e5f5 75%,
+    #ede7f6 100%
+  );
 }
 
 .hero-content {

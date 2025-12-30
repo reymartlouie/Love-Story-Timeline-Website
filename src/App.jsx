@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './styles/index.css';
 import milestones from './milestones';
+import useScrollProgress from './hooks/useScrollProgress';
 
 // Components
 import {
@@ -35,6 +36,12 @@ export default function App() {
   // Modal state
   const [modalOpen, setModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Scroll progress for hero fade effect (must be before early returns)
+  const scrollProgress = useScrollProgress(0, 400);
+  const heroOpacity = 1 - scrollProgress * 0.8;
+  const heroScale = 1 - scrollProgress * 0.1;
+  const heroBlur = scrollProgress * 10;
 
   const handleImageClick = (milestone) => {
     const index = milestones.findIndex(m => m.id === milestone.id);
@@ -162,8 +169,30 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="hero">
-        <ScatteredPhotos show={true} />
-        <div className="hero-hearts-background">
+        <div
+          className="scattered-photos-wrapper"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            opacity: heroOpacity,
+            transform: `scale(${heroScale})`,
+            filter: `blur(${heroBlur}px)`,
+            pointerEvents: 'none'
+          }}
+        >
+          <ScatteredPhotos show={true} />
+        </div>
+        <div
+          className="hero-hearts-background"
+          style={{
+            opacity: heroOpacity,
+            transform: `scale(${heroScale})`,
+            filter: `blur(${heroBlur}px)`
+          }}
+        >
           <span className="floating-heart-bg">💕</span>
           <span className="floating-heart-bg">💝</span>
           <span className="floating-heart-bg">❤️</span>
@@ -173,7 +202,14 @@ export default function App() {
           <span className="floating-heart-bg">💝</span>
           <span className="floating-heart-bg">❤️</span>
         </div>
-        <div className="hero-content">
+        <div
+          className="hero-content"
+          style={{
+            opacity: heroOpacity,
+            transform: `scale(${heroScale})`,
+            filter: `blur(${heroBlur}px)`
+          }}
+        >
           <h1 className="hero-title">Our Love Story</h1>
           <p className="hero-subtitle">Reymart & Keisha</p>
           <div className="hero-date">2024 — Death</div>
@@ -196,13 +232,16 @@ export default function App() {
 
       {/* Timeline Section */}
       <main className="timeline">
-        {milestones.map(m => (
-          <TimelineItem
-            key={m.id}
-            milestone={m}
-            onImageClick={handleImageClick}
-          />
-        ))}
+        <h1 className="timeline-title">Our Milestone</h1>
+        <div className="timeline-items">
+          {milestones.map(m => (
+            <TimelineItem
+              key={m.id}
+              milestone={m}
+              onImageClick={handleImageClick}
+            />
+          ))}
+        </div>
       </main>
 
       <footer>❤️ To be continue...</footer>

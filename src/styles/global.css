@@ -46,4 +46,6 @@ footer {
   font-weight: 400;
   background: var(--bg-secondary);
   color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
 }

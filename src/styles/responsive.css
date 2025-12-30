@@ -99,12 +99,14 @@
     justify-content: center;
   }
 
-  .timeline { padding: 48px 24px 80px; }
+  .timeline { padding: 40px 24px 80px; }
 
-  .timeline::before {
+  .timeline-title {
+    margin-bottom: 40px;
+  }
+
+  .timeline-items::before {
     left: 16px;
-    top: 48px;
-    bottom: 80px;
   }
 
   .timeline-item { margin: 48px 0; }

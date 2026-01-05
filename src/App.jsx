@@ -225,10 +225,10 @@ export default function App() {
               />
 
           <div className="scroll-indicator">
-            <span className="key-hint">Space</span> to scroll
+            Space to explore
           </div>
           <div className="swipe-indicator">
-            <span>Swipe up to explore</span>
+            Swipe to explore
           </div>
         </div>
       </section>
@@ -247,7 +247,16 @@ export default function App() {
         </div>
       </main>
 
-      <footer>❤️ To be continue...</footer>
+      <footer className="apple-footer">
+        <div className="footer-card">
+          <span className="footer-text">Crafting Memories</span>
+          <span className="wave-dots">
+            <span className="dot"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </span>
+        </div>
+      </footer>
 
       {/* Photo Modal */}
       <PhotoModal

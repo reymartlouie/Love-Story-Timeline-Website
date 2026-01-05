@@ -63,21 +63,21 @@ const LoveLetter = ({ onComplete, onPlayMusic }) => {
                   {isMobile ? (
                     <>Tap anywhere to open</>
                   ) : (
-                    <>Press <span className="key">Space</span> to open</>
+                    <>Press Space to open</>
                   )}
                 </div>
               </div>
             ) : (
               <div className="letter-message">
                 <p className="message-text">
-                  Hope this website reach you, know that you're loved and cherished, I wish to spend my whole life with you, I love you so much baby jang ko.
+                  Hope this website reach you, know that you're loved and cherished, I wish to spend my whole life with you, I love you so much baby jangj ko.
                 </p>
                 <div className="message-signature">— With all my heart ❤️</div>
                 <div className="space-hint continue">
                   {isMobile ? (
                     <>Tap anywhere to continue</>
                   ) : (
-                    <>Press <span className="key">Space</span> to continue</>
+                    <>Press Space to continue</>
                   )}
                 </div>
               </div>

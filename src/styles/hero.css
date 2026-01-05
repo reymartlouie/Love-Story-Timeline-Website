@@ -170,7 +170,8 @@
   margin-top: clamp(32px, 6vh, 48px);
 }
 
-.scroll-indicator .key-hint {
+.scroll-indicator .key-hint,
+.swipe-indicator .key-hint {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -191,7 +192,8 @@
 .swipe-indicator {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 8px;
   color: var(--text-secondary);
   font-size: 13px;
   font-weight: 500;
@@ -204,6 +206,7 @@
 @media (max-width: 768px) {
   .swipe-indicator {
     display: flex;
+    justify-content: center;
   }
 }
 
@@ -267,7 +270,8 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   }
 
-  .scroll-indicator .key-hint {
+  .scroll-indicator .key-hint,
+  .swipe-indicator .key-hint {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.15);
     color: var(--text-secondary);

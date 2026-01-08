@@ -70,7 +70,7 @@ const LoveLetter = ({ onComplete, onPlayMusic }) => {
             ) : (
               <div className="letter-message">
                 <p className="message-text">
-                  Hope this website reach you, know that you're loved and cherished, I wish to spend my whole life with you, I love you so much baby jangj ko.
+                  Hope this website reach you, know that you're loved and cherished, I wish to spend my whole life with you, I love you so much baby jang ko.
                 </p>
                 <div className="message-signature">— With all my heart ❤️</div>
                 <div className="space-hint continue">

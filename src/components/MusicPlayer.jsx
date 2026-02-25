@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 const defaultPlaylist = [
-  { src: '/audio/tenerif-sea.mp3', title: 'tenerif-sea' }
+  { src: '/audio/Nobody-else.mp3', title: 'Nobody-else' }
 ];
 
 const MusicPlayer = ({ playlist = defaultPlaylist, shouldPlay = false }) => {

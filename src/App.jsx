@@ -218,8 +218,9 @@ export default function App() {
 
           <MusicPlayer
                 playlist={[
-                  { src: '/audio/tenerif-sea.mp3', title: 'tenerif-sea' },
-                  { src: '/audio/ilysb-stripped.mp3', title: 'ilysb' }
+                  { src: '/audio/Nobody-else.mp3', title: 'Nobody Else' },
+                  { src: '/audio/tenerif-sea.mp3', title: 'Tenerif Sea' },
+                  { src: '/audio/ilysb-stripped.mp3', title: 'ILYSB' }
                 ]}
                 shouldPlay={shouldPlayMusic}
               />
